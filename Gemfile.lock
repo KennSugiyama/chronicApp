@@ -54,7 +54,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-
     concurrent-ruby (1.0.5-java)
     devise (4.3.0)
       bcrypt (~> 3.0)
@@ -62,7 +61,6 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-
     dotenv (2.2.1)
     erubi (1.6.0)
     execjs (2.7.0)
