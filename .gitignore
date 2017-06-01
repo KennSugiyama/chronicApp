@@ -20,4 +20,3 @@
 .env
 
 
-Movie.where('genre LIKE ?', '%Drama%')
