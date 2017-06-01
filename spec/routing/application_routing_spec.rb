@@ -1,7 +1,7 @@
 # require "rails_helper"
 
 # RSpec.describe "Routing to the application", :type => :routing do
-#   it "routes / to game#index" do
+#   it "routes / to ?????#index" do
 #     expect(:get => "/").to route_to("games#index")
 #   end
 # end
