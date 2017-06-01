@@ -1,0 +1,18 @@
+
+<!-- change path? -->
+<%= link_to 'Back', root_path %>
+
+<h1>Trending Movies</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= link_to 'Show', movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
