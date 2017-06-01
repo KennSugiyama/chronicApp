@@ -10,3 +10,17 @@
 
 </div>
 
+<%= link_to 'Write A Review', new_review_path %>
+
+<% @movie.reviews.each do |review| %>
+  <%= review.body %>
+  <%= link_to 'Edit', edit_review_path(review) %>
+  <%= link_to 'Delete', destroy_review_path(review) %>
+  <%= link_to 'Write A Comment', new_comment_path %>
+  <% @movie.comments.each do |comment| %>
+    <%= comment.body %>
+    <%= link_to 'Edit', edit_comment_path(comment) %>
+    <%= link_to 'Delete', destroy_comment_path(comment) %>
+  <% end %>
+<% end %>
+
