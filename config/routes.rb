@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :movies
+
+  get 'search', to: 'movies#search'
+
+  root 'movies#index'
+
   resources :reviews
   resources :comments
 
@@ -13,5 +19,4 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
-
 end
