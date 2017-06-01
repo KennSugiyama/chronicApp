@@ -8,17 +8,20 @@ class ReviewsController < ApplicationController
   # end
 
   def new
+    @movie = Movie.find(params[:movie_id])
     @review = Review.new
   end
 
   def create
-    @review = Review.new(review_params)
+    @movie = Movie.find(params[:movie_id])
+    @review = @movie.reviews.create(review_params)
 
-    if @review.save
-      redirect_to @review
-    else
-      render 'new'
-    end
+    redirect_to movie_path(@movie)
+    # if @review.save
+    #   redirect_to @review
+    # else
+    #   render 'new'
+    # end
   end
 
   def update
