@@ -1,3 +1,11 @@
+<div style="margin-left: 0 auto">
+
 <h1><%= @movie.title %></h1>
+  <p><b>Genre</b>: <%= @movie.genre %></p>
+  <p><b>Year</b>: <%= @movie.year %></p>
+  <p><b>Actors</b>: <%= @movie.actors %></p>
+  <p><b>Director</b>: <%= @movie.director %>
+
+</div>
 
 <%= link_to 'Back', movies_path %>
