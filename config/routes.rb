@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'movies/index'
+
   devise_for :users
 
   resources :users
-  root to: "users#index"
 
   resources :reviews
   resources :comments
