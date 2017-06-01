@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'search', to: 'movies#search'
 
-  root 'movies#index'
+  root 'application#index'
 
   resources :reviews
   resources :comments
