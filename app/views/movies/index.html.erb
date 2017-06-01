@@ -24,7 +24,11 @@
 
 <table>
   <tr>
-    <th>Title</th>
+  <% if @genre %>
+    <th>Title for the <%= @genre %> genre:</th>
+  <% else %>
+    <th>Title:</th>
+  <% end %>
   </tr>
 
   <% @movies.each do |movie| %>
