@@ -5,7 +5,13 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :movies
+  resources :reviews
+  resources :comments
 
-  root 'movies#index'
+  resources :movies do
+    resources :reviews do
+      resources :comments
+    end
+  end
+
 end
