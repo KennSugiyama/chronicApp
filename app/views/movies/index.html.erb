@@ -1,13 +1,41 @@
+<%= link_to 'Back', root_path %>
 
-<h1>Movies!</h1>
+<h1>Trending Movies</h1>
 
-<%= form_tag search_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :title, params[:title] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+  Would you like to sort by Genre?
+  <%= form_tag("/movies/index", method: "get") do %>
+    <select name="genre">
+      <option value=“Short”>Short</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Animation">Animation</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Action">Action</option>
+      <option value="Horror">Horror</option>
+      <option value="Western">Western</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Crime">Crime</option>
+    </select>
+    <%= submit_tag("Sort") %>
+    <% end %>
+    </br></br>
 
-<% end %>
+<table>
+  <tr>
+  <% if @genre %>
+    <th>Title for the <%= @genre %> genre:</th>
+  <% else %>
+    <th>Title:</th>
+  <% end %>
+  </tr>
 
-<%= link_to 'Back', movies_path %>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= link_to "#{movie.title}", movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
+
 
