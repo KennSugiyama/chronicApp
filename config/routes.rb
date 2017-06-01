@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
-
   resources :movies
+
+  get 'search', to: 'movies#search'
 
   root 'movies#index'
 end

@@ -1,6 +1,6 @@
 <h1>Movies!</h1>
 
-<%= form_tag movies_path, :method => 'get' do %>
+<%= form_tag search_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :title, params[:title] %>
     <%= submit_tag "Search", :name => nil %>
