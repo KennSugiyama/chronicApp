@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
+  get 'movies/index'
+
   devise_for :users
 
   resources :users
-  root to: "users#index"
 
+  resources :movies
+
+  get 'search', to: 'movies#search'
+
+  root 'movies#index'
+
+  resources :reviews
+  resources :comments
+
+  resources :movies do
+    resources :reviews do
+      resources :comments
+    end
+  end
 end
