@@ -2,7 +2,12 @@ class MoviesController < ApplicationController
   include ApplicationHelper
 
   def index
-    
+    if params[:genre]
+      genre = params[:genre]
+      @movies = Movie.where('genre LIKE ?', "%#{genre}%")
+    else
+      @movies = Movie.all
+    end
   end
 
   def show

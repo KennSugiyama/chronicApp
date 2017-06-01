@@ -2,6 +2,26 @@
 
 <h1>Trending Movies</h1>
 
+  Would you like to sort by Genre?
+  <%= form_tag("/movies/index", method: "get") do %>
+    <select name="genre">
+      <option value=“Short”>Short</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Animation">Animation</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Action">Action</option>
+      <option value="Horror">Horror</option>
+      <option value="Western">Western</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Crime">Crime</option>
+    </select>
+    <%= submit_tag("Sort") %>
+    <% end %>
+    </br></br>
+
 <table>
   <tr>
     <th>Title</th>
@@ -9,8 +29,7 @@
 
   <% @movies.each do |movie| %>
     <tr>
-      <td><%= movie.title %></td>
-      <td><%= link_to 'Show', movie_path(movie) %></td>
+      <td><%= link_to "#{movie.title}", movie_path(movie) %></td>
     </tr>
   <% end %>
 </table>
