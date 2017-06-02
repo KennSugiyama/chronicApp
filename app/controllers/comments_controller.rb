@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new
 
     respond_to do |format|
-      format.html { render :new }
-      format.json { render :new }
+      format.html
+      format.js
     end
   end
 
@@ -21,13 +21,13 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
 
     respond_to do |format|
-      format.html
-      format.json
+      if @comment.save
+      format.html {redirect_to movie_path(@movie)}
+      format.js {redirect_to movie_path(@movie)}
     else
-      redirect_to movie_path(@review.movie)
+      format.html {redirect_to new_movie_comment_path(@comment.review.movie)}
     end
   end
 
@@ -37,9 +37,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json
-    else
-      render 'edit'
+      format.js
     end
   end
 
@@ -49,11 +47,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
 
-# respond to?
-    if @comment.update(comment_params)
-      redirect_to movie_path(@movie)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to movie_path(@movie)}
+        format.js { redirect_to movie_path(@movie)}
+      else
+        format.html { redirect_to edit_review_comment_path(@movie, comment)}
+      end
     end
   end
 
@@ -62,13 +62,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @movie = @review.movie.id
     @comment.destroy
-
-    respond_to do |format|
-      format.html
-      format.json
-    else
-      redirect_to movie_path(@movie)
-    end
   end
 
 
