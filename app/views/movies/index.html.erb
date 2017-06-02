@@ -1,0 +1,49 @@
+<div class="container">
+
+<!-- Spacial formatting div -->
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 trending-movies">
+<h1 class="white-text">Trending Movies</h1>
+
+  <p class="white-text">Choose Your Genre</p>
+  <%= form_tag("/movies/index", method: "get") do %>
+
+    <select name="genre">
+      <option value="Comedy">Comedy</option>
+      <option value=“Short”>Short</option>
+      <option value="Drama">Drama</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Animation">Animation</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Action">Action</option>
+      <option value="Horror">Horror</option>
+      <option value="Western">Western</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Crime">Crime</option>
+    </select>
+    <%= submit_tag("Sort") %>
+    <% end %>
+  </div>
+  <!-- Spacial formatting div -->
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 trending-movies-titles">
+    <div class="trending-subtitle">
+      <% if @genre %>
+        <h3 class="white-text"><%= @genre %> Movies</h3>
+      <% else %>
+        <h3 class="white-text">Titles</h3>
+      <% end %>
+    </div>
+
+      <% @movies.each do |movie| %>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+          <p><%= link_to "#{movie.title}", movie_path(movie) %></p>
+        </div>
+      <% end %>
+  </div>
+
+</div>

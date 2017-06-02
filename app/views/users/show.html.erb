@@ -1,0 +1,17 @@
+<div class="user-show">
+  <div class="user-show-text">
+    <h1><%= @user.username %></h1>
+     <h2> Is a wonderful Crabby Movie Reviewer!! </h2>
+     <p>  Need to reach them? </p>
+          Here is <%= @user.username %>'s email address: <%= @user.email %>
+     </p>
+
+
+      <% if user_signed_in? && current_user.super_user? && !@user.super_user? %>
+        <b><%= link_to 'Make Super User', user_path(@user),
+              method: :patch,
+              data: { confirm: 'Are you sure?' } %></b>
+      <% end %>
+
+    </div>
+</div>

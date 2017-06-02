@@ -4,3 +4,6 @@ class MovieAdapter
     request = HTTParty.get("http://www.omdbapi.com/?t=#{movie_title}&apikey=#{key}").parsed_response
   end
 end
+
+
+
