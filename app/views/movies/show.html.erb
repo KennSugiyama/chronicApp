@@ -65,7 +65,7 @@
 <% end %>
 </p>
 
-    <td><%= pluralize(review.votes.sum(:point), "votes") %></td>
+   <%= pluralize(review.votes.sum(:point), "votes") %>
     <span class="vote-buttons"><%= button_to '+1', review_upvote_path(review), method: :post %></span>
     <span class="vote-buttons"><%= button_to '-1', review_downvote_path(review), method: :post %></span>
 

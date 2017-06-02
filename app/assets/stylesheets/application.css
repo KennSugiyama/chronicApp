@@ -2,6 +2,11 @@ div a {
   color: #ffffff;
 }
 
+.order {
+  color: white;
+  text-align: left;
+}
+
 button a {
   color: black;
 }

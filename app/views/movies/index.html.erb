@@ -6,7 +6,7 @@
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 trending-movies">
 <h1 class="white-text">Trending Movies</h1>
 
-  <p class="white-text">Choose Your Genre</p>
+  <p class="white-text">Sort by Genre</p>
   <%= form_tag("/movies/index", method: "get") do %>
 
     <select name="genre">
@@ -25,6 +25,16 @@
     </select>
     <%= submit_tag("Sort") %>
     <% end %>
+
+    <p class="white-text">Sort by Rating</p>
+  <%= form_tag("/movies/index", method: "get") do %>
+
+    <select name="rating">
+      <option value="High">Highest to Lowest</option>
+      <option value=“Low”>Lowest to Highest</option>
+    </select>
+    <%= submit_tag("Sort") %>
+    <% end %>
   </div>
   <!-- Spacial formatting div -->
   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
@@ -39,11 +49,13 @@
       <% end %>
     </div>
 
+    <ol>
       <% @movies.each do |movie| %>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-          <p><%= link_to "#{movie.title}", movie_path(movie) %></p>
+          <li class="order"><%= link_to "#{movie.title}", movie_path(movie) %></li>
         </div>
       <% end %>
+      </ol>
   </div>
 
 </div>
