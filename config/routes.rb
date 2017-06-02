@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Override devise controller to use our custom RegistrationsController
   devise_for :users, :controllers => {registrations: 'registrations'}
-  resources :users
+  # resources :users
 
   resources :movies
 
