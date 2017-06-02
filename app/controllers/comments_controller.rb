@@ -10,11 +10,6 @@ class CommentsController < ApplicationController
   def new
     @review = Review.find(params[:review_id])
     @comment = Comment.new
-
-    respond_to do |format|
-      format.html { render :new }
-      format.json { render :new }
-    end
   end
 
   def create
@@ -22,25 +17,13 @@ class CommentsController < ApplicationController
     @comment = @review.comments.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-
-    respond_to do |format|
-      format.html
-      format.json
-    else
-      redirect_to movie_path(@review.movie)
-    end
+    redirect_to movie_path(@review.movie)
   end
 
   def edit
     @review = Review.find(params[:review_id])
     @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.json
-    else
-      render 'edit'
-    end
+    render 'edit'
   end
 
   def update
@@ -48,8 +31,6 @@ class CommentsController < ApplicationController
     @movie = @review.movie.id
     @comment = Comment.find(params[:id])
 
-
-# respond to?
     if @comment.update(comment_params)
       redirect_to movie_path(@movie)
     else
@@ -63,12 +44,7 @@ class CommentsController < ApplicationController
     @movie = @review.movie.id
     @comment.destroy
 
-    respond_to do |format|
-      format.html
-      format.json
-    else
-      redirect_to movie_path(@movie)
-    end
+    redirect_to movie_path(@movie)
   end
 
 

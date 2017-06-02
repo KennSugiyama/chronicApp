@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   include ApplicationHelper
 
-
   def index
     if params[:genre]
       @genre = params[:genre]
@@ -22,11 +21,6 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     if @movie.votes.any?
       @rating = @movie.votes.where(voteable_type:"Movie").average(:point).round(1,:truncate)
-    end
-
-    respond_to do |format|
-      format.html
-      format.json
     end
   end
 
