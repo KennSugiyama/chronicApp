@@ -3,14 +3,10 @@ Rails.application.routes.draw do
 
   # Override devise controller to use our custom RegistrationsController
   devise_for :users, :controllers => {registrations: 'registrations'}
-<<<<<<< HEAD
 
-    resources :votes
-    post "upvote_comment", to: "votes#upvote_comment"
 
-=======
   resources :users
->>>>>>> a92ef2da92841482111699bd6fdf3d0008518a45
+
 
   resources :movies
 
@@ -30,6 +26,13 @@ Rails.application.routes.draw do
   resources :comments do
     resources :votes
     post "upvote", to: "votes#upvote_comment"
+    post "downvote", to: "votes#downvote_comment"
+  end
+
+  resources :reviews do
+    resources :votes
+    post "upvote", to: "votes#upvote_review"
+    post "downvote", to: "votes#downvote_review"
   end
 
 end

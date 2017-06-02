@@ -1,34 +1,44 @@
 class VotesController < ApplicationController
 
   def upvote_comment
-    p "*"*60
-    p params
-
-
     @comment = Comment.find(params[:comment_id])
-    p "====="*60
-    p @comment
-    @comment.votes.create(point:1).save
+    @vote = @comment.votes.new(point:1)
+    @vote.user_id = current_user.id
+    @vote.save
+    @movie = @comment.review.movie
+    redirect_to(movie_path(@movie))
+  end
 
-     p "====="*60
-    p @comment.votes
-    # redirect_to(comments_path)
+  def downvote_comment
+    @comment = Comment.find(params[:comment_id])
+    @vote = @comment.votes.new(point:-1)
+    @vote.user_id = current_user.id
+    @vote.save
+    @movie = @comment.review.movie
+    redirect_to(movie_path(@movie))
+  end
+
+  def upvote_review
+    @review = Review.find(params[:review_id])
+    @vote = @review.votes.new(point:1)
+    @vote.user_id = current_user.id
+    @vote.save
+    @movie = @review.movie
+    redirect_to(movie_path(@movie))
+  end
+
+  def downvote_review
+    @review = Review.find(params[:review_id])
+    @vote = @review.votes.new(point:-1)
+    @vote.user_id = current_user.id
+    @vote.save
+    @movie = @review.movie
+    redirect_to(movie_path(@movie))
   end
 
 
-  # # private
+  private
   def vote_params
     params.require(:vote).permit(:user)
   end
 end
-
-
-# upvoteComment_vote POST   /votes/:id/upvoteComment(.:format)              votes#upvoteComment
-
-  # def create
-  #   @review = Review.find(params[:review_id])
-  #   @comment = @review.comments.new(comment_params)
-  #   @comment.user_id = current_user.id
-  #   @comment.save
-  #   redirect_to movie_path(@review.movie)
-  # end
