@@ -1,3 +1,15 @@
+div a {
+  color: #ffffff;
+}
+
+button a {
+  color: black;
+}
+
+.vote-buttons {
+  color: black;
+}
+
 .user-show {
   background: black;
   opacity: 0.8;
@@ -6,11 +18,25 @@
   border-radius: 25px;
 }
 
+img {
+  opacity: 1;
+  float: right;
+  margin-right: 2%;
+}
+
+.stars-submit {
+  color: black;
+}
+
 .user-show-text {
   padding: 10px;
 }
 
 .error {
+  color: red;
+}
+
+#error_explanation {
   color: red;
 }
 

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170531223032) do
     t.string "title"
     t.string "genre"
     t.string "year"
+    t.string "image_url"
     t.string "actors"
     t.string "director"
     t.datetime "created_at", null: false
