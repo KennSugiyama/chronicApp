@@ -7,7 +7,7 @@
 <h2 class="white-text">New Review</h2>
 
 
-<%= form_for([@movie, @movie.reviews.build], remote: true ) do |f| %>
+<%= form_for ([@movie, @movie.reviews.build]) do |f| %>
   <% if @review.errors.any? %>
     <div class="white-text" id="error_explanation">
       <h2 class="white-text">
