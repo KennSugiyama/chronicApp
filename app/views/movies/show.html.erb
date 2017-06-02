@@ -11,11 +11,11 @@
   <p><b>Genre</b>: <%= @movie.genre %></p>
   <p><b>Year</b>: <%= @movie.year %></p>
   <p><b>Actors</b>: <%= @movie.actors %></p>
-  <p><b>Director</b>: <%= @movie.director %>
-</div><br>
+  <p><b>Director</b>: <%= @movie.director %></p>
+</div>
 
 <% if @rating %>
-  <h2><%= @rating %> Stars</h2>
+  <h2 id="ratings-title"><%= @rating %> Stars</h2>
 <% else %>
   <h2>There are no ratings for this movie</h2>
 <% end %>
@@ -44,7 +44,6 @@
 
 
 
-</p>
 <% if  user_signed_in? && current_user.super_user?  %>
   <%= link_to 'Write A Review', new_movie_review_path(@movie) %>
 <% end %><br><br><br>
@@ -53,53 +52,50 @@
                     <!-- REVIEW SECTION -->
 <% @movie.reviews.each do |review| %>
 
-<p><%= link_to "#{review.user.username}", user_path(review.user) %>'s Review
-'s Review:
-<%= review.body %>
+<p class="review-text"><%= link_to "#{review.user.username}", user_path(review.user)%>'s Review:
+    <span><%= pluralize(review.votes.sum(:point), "votes") %></span>
+    <div class="vote-buttons">><%= button_to '+1', review_upvote_path(review), method: :post %></div>
+    <div class="vote-buttons">><%= button_to '-1', review_downvote_path(review), method: :post %></div>
 
 <% if user_signed_in? && review.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_movie_review_path(@movie, review) %>
-    <%= link_to 'Delete', movie_review_path(@movie, review),
+  <span class="btn"><%= link_to 'Edit', edit_movie_review_path(@movie, review) %></span>
+    <span class="btn"><%= link_to 'Delete', movie_review_path(@movie, review),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' } %></span>
 <% end %>
+<p class="review-text"><%= review.body %></p>
 </p>
-
-    <td><%= pluralize(review.votes.sum(:point), "votes") %></td>
-    <span class="vote-buttons"><%= button_to '+1', review_upvote_path(review), method: :post %></span>
-    <span class="vote-buttons"><%= button_to '-1', review_downvote_path(review), method: :post %></span>
+    
 
 
 
                   <!-- COMMENT SECTION -->
 <% if user_signed_in? %>
-<%= link_to "Comment", new_review_comment_path(review) %> on
+<%= link_to "Add a Comment", new_review_comment_path(review) %>
+<% end %><br><br>
 
-<%= link_to "#{review.user.username}", user_path(review.user) %>'s Review
-<% end %>
-
-<ol>
   <% review.comments.each do |comment| %>
 
+<ul>
     <li><%= link_to "#{comment.user.username}", user_path(comment.user) %>'s Comment: <%= comment.body %>
 
     <% if user_signed_in? && comment.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_review_comment_path(review, comment) %>
+      <span class="btn"><%= link_to 'Edit', edit_review_comment_path(review, comment) %></span>
     <% end %>
 
     <% if user_signed_in? && (current_user.super_user? || comment.user_id == current_user.id) %>
-      <%= link_to 'Delete', review_comment_path(review, comment),
+      <span class="btn"><%= link_to 'Delete', review_comment_path(review, comment),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
+                  data: { confirm: 'Are you sure?' } %></span>
     <% end %>
-
-        <td><%= pluralize(comment.votes.sum(:point), "votes") %></td>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></div>
+<br>
+        <span><%= pluralize(comment.votes.sum(:point), "votes") %></span>
+        <div class="vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></div>
+        <div class="vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></div>
     </li>
+</ul>
 
   <% end %>
-</ol>
 <% end %>
 
 

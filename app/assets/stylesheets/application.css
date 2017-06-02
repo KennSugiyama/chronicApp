@@ -1,3 +1,7 @@
+ul {
+  list-style: none;
+}
+
 div a {
   color: #ffffff;
 }
@@ -6,8 +10,21 @@ button a {
   color: black;
 }
 
+#ratings-title {
+  margin-top: 10%;
+}
+
+.review-text {
+  font-size: 18pt;
+}
+
+.comment-text {
+  font-size: 12pt;
+}
+
 .vote-buttons {
   color: black;
+  display: inline-block;
 }
 
 .user-show {
@@ -18,11 +35,6 @@ button a {
   border-radius: 25px;
 }
 
-img {
-  opacity: 1;
-  float: right;
-  margin-right: 2%;
-}
 
 .stars-submit {
   color: black;
@@ -45,10 +57,16 @@ img {
   text-align: left;
   padding-top: 1%;
   padding-bottom: 2%;
-  /*background:rgba(50,0,0,0.5);*/
-  background: black;
-  opacity: 0.85;
+  background:rgba(0,0,0,0.8);
+/*  background: black;
+  opacity: 0.85;*/
   width: 50%;
+}
+
+.box-it-out img {
+  opacity: 1;
+  float: right;
+  margin-right: 2%;
 }
 
 #signup-button {
@@ -66,8 +84,7 @@ img {
 
 .trending-movies {
   width: 30%;
-  background:black;
-  opacity: 0.8;
+  background:rgba(0,0,0,0.8);
   padding: 3%;
   border-radius: 25px;
   text-align: center;
@@ -76,8 +93,7 @@ img {
 
 .trending-movies-titles {
   width: 30%;
-  background:black;
-  opacity: 0.8;
+  background:rgba(0,0,0,0.8);
   padding: 1%;
   padding-bottom: 30px;
   border-radius: 25px;
@@ -97,8 +113,7 @@ img {
   margin-top: 18%;
   margin-left: 25%;
   margin-right: 25%;
-  background: black;
-  opacity: 0.8;
+  background:rgba(0,0,0,0.8);
   width: 50%;
 }
 
@@ -1208,6 +1223,7 @@ body {
   line-height: 1.42857143;
   color: #333;
   background-image: url(https://pbs.twimg.com/profile_images/735861411289563136/CpLtg7bj.jpg);
+  background-attachment: fixed;
 }
 input,
 button,
