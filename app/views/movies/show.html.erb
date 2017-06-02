@@ -5,32 +5,40 @@
 <div style="margin-left: 0 auto">
 
 <h1><%= @movie.title %></h1>
+  <% if @movie.image_url != "N/A" %>
+    <img src="<%= @movie.image_url %>">
+  <% end %>
   <p><b>Genre</b>: <%= @movie.genre %></p>
   <p><b>Year</b>: <%= @movie.year %></p>
   <p><b>Actors</b>: <%= @movie.actors %></p>
   <p><b>Director</b>: <%= @movie.director %>
-</div>
+</div><br>
 
+<% if @rating %>
+  <h2><%= @rating %> Stars</h2>
+<% else %>
+  <h2>There are no ratings for this movie</h2>
+<% end %>
 
-<h2><%= @rating %> Stars</h2>
+<% if user_signed_in? %>
+  <%= form_tag(movie_rating_path(@movie)) do %>
 
-<%= form_tag(movie_rating_path(@movie)) do %>
+    <%= radio_button_tag(:star, "1") %>
+      <%= label_tag(:star1, "1") %>
+    <%= radio_button_tag(:star, "2") %>
+      <%= label_tag(:star2, "2") %>
+    <%= radio_button_tag(:star, "3") %>
+      <%= label_tag(:star3, "3") %>
+    <%= radio_button_tag(:star, "4") %>
+      <%= label_tag(:star4, "4") %>
+    <%= radio_button_tag(:star, "5") %>
+      <%= label_tag(:star5, "5") %>
 
-  <%= radio_button_tag(:star, "1") %>
-    <%= label_tag(:star1, "1") %>
-  <%= radio_button_tag(:star, "2") %>
-    <%= label_tag(:star2, "2") %>
-  <%= radio_button_tag(:star, "3") %>
-    <%= label_tag(:star3, "3") %>
-  <%= radio_button_tag(:star, "4") %>
-    <%= label_tag(:star4, "4") %>
-  <%= radio_button_tag(:star, "5") %>
-    <%= label_tag(:star5, "5") %>
+    <p class="stars-submit">
+       <%= submit_tag("Submit") %>
+    </p>
 
-  <p>
-     <%= submit_tag("Submit") %>
-  </p>
-
+  <% end %>
 <% end %>
 
 
@@ -38,11 +46,13 @@
 
 </p>
 <% if  user_signed_in? && current_user.super_user?  %>
+
 <div id="new-review-form">
   <%= link_to 'Write A Review', new_movie_review_path(@movie), remote: true   %>
   </div>
-  <!-- render list -->
+
 <% end %>
+
 
 
                     <!-- REVIEW SECTION -->
@@ -62,11 +72,10 @@
 
 <% end %>
 </p>
-  <tr>
+
     <td><%= pluralize(review.votes.sum(:point), "votes") %></td>
-    <td><%= button_to '+1', review_upvote_path(review), method: :post %>
-    <td><%= button_to '-1', review_downvote_path(review), method: :post %>
-  </tr>
+    <span class="vote-buttons"><%= button_to '+1', review_upvote_path(review), method: :post %></span>
+    <span class="vote-buttons"><%= button_to '-1', review_downvote_path(review), method: :post %></span>
 
 
 
@@ -92,11 +101,9 @@
                   data: { confirm: 'Are you sure?' } %>
     <% end %>
 
-      <tr>
         <td><%= pluralize(comment.votes.sum(:point), "votes") %></td>
-        <td><%= button_to '+1', comment_upvote_path(comment), method: :post %>
-        <td><%= button_to '-1', comment_downvote_path(comment), method: :post %>
-      </tr>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></div>
     </li>
 
   <% end %>

@@ -59,10 +59,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
 
-    respond_to do |format|
-      format.html { redirect_to movie_path(@movie) }
-      format.js
-    end
+   redirect_to movie_path(@movie)
   end
 
   private
