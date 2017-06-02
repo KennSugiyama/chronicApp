@@ -1,7 +1,8 @@
+<div class="container box-it-out">
 <!-- change path -->
 <%= link_to 'Back', movies_path %>
 
-<h1>Edit Review</h1>
+<h1 class="white-text">Edit Review</h1>
 
 <%= form_for ([@review]) do |f| %>
   <% if @review.errors.any? %>
@@ -28,4 +29,4 @@
   </p>
 <% end %>
 
-
+</div>
