@@ -1,3 +1,20 @@
+.box-it-out {
+  border-radius: 25px;
+  text-align: left;
+  padding-top: 1%;
+  padding-bottom: 2%;
+  background:rgba(50,0,0,0.5);
+  width: 50%;
+}
+
+#signup-button {
+  padding-top: 3px;
+  color: black;
+  border-radius: 5px;
+  margin: 0;
+  border: 0;
+}
+
 /*Trending*/
 .trending-subtitle {
   padding-bottom: 20px;
@@ -50,10 +67,10 @@
   margin-top: 10px;
 }
 
-footer {
+/*footer {
   margin-top: 22%;
   margin-left: 4%;
-}
+}*/
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)

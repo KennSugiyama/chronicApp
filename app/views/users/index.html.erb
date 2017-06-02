@@ -1,9 +1,11 @@
-<h1>All of our Crabby Users!</h1>
+<div class="container box-it-out">
+<h1 class="white-text">All of our Crabby Users!</h1>
 
 
     <% @users.each do |user| %>
-      <p>
+      <p class="white-text">
       <%= link_to "#{user.username}", user_path(user) %>
       </p>
 
 <% end %>
+</div>
