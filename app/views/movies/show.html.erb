@@ -14,6 +14,8 @@
   <%= link_to 'Write A Review', new_movie_review_path(@movie) %>
 <% end %>
 
+
+                    <!-- REVIEW SECTION -->
 <% @movie.reviews.each do |review| %>
 
 <p><%= review.user.username %>'s Review:
@@ -26,10 +28,19 @@
               data: { confirm: 'Are you sure?' } %>
 <% end %>
 </p>
+  <tr>
+    <td><%= pluralize(review.votes.sum(:point), "votes") %></td>
+    <td><%= button_to '+1', review_upvote_path(review), method: :post %>
+    <td><%= button_to '-1', review_downvote_path(review), method: :post %>
+  </tr>
 
+
+
+                  <!-- COMMENT SECTION -->
 <%= link_to "Comment", new_review_comment_path(review) %> on <%= review.user.username %>'s Review
 <ol>
   <% review.comments.each do |comment| %>
+
     <li><%= comment.user.username %>'s Comment: <%= comment.body %>
 
     <% if comment.user_id == current_user.id %>
@@ -41,9 +52,17 @@
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>
     <% end %>
+
+      <tr>
+        <td><%= pluralize(comment.votes.sum(:point), "votes") %></td>
+        <td><%= button_to '+1', comment_upvote_path(comment), method: :post %>
+        <td><%= button_to '-1', comment_downvote_path(comment), method: :post %>
+      </tr>
     </li>
 
   <% end %>
 </ol>
 <% end %>
+
+
 
