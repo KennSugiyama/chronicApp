@@ -12,6 +12,9 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @rating = @movie.votes.where(voteable_type:"Movie").average(:point).round(1,:truncate)
+    p "*"*50
+    p @rating
   end
 
   def search
@@ -20,6 +23,9 @@ class MoviesController < ApplicationController
     @movie = movie_title_search(request)
     redirect_to movie_path(@movie)
   end
+
+
+
 
   private
 

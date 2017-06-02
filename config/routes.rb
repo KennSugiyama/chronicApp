@@ -25,14 +25,20 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :votes
-    post "upvote", to: "votes#upvote_comment"
-    post "downvote", to: "votes#downvote_comment"
+      post "upvote", to: "votes#upvote_comment"
+      post "downvote", to: "votes#downvote_comment"
   end
 
   resources :reviews do
     resources :votes
-    post "upvote", to: "votes#upvote_review"
-    post "downvote", to: "votes#downvote_review"
+      post "upvote", to: "votes#upvote_review"
+      post "downvote", to: "votes#downvote_review"
   end
+
+  resources :movies do
+    resources :votes
+      post "rating", to: "votes#movie_rating"
+  end
+
 
 end
