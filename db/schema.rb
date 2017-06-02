@@ -68,8 +68,10 @@ ActiveRecord::Schema.define(version: 20170531223032) do
     t.integer "point", null: false
     t.string "voteable_type"
     t.bigint "voteable_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
     t.index ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id"
   end
 
