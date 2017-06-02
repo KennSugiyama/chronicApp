@@ -93,11 +93,9 @@
                   data: { confirm: 'Are you sure?' } %>
     <% end %>
 
-      <tr>
         <td><%= pluralize(comment.votes.sum(:point), "votes") %></td>
-        <td><%= button_to '+1', comment_upvote_path(comment), method: :post %>
-        <td><%= button_to '-1', comment_downvote_path(comment), method: :post %>
-      </tr>
+        <span class="vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></span>
+        <span class="vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></span>
     </li>
 
   <% end %>
