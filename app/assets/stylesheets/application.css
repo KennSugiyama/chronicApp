@@ -1,9 +1,23 @@
+.user-show {
+  background: black;
+  opacity: 0.8;
+  color: white;
+  width: 50%;
+  border-radius: 25px;
+}
+
+.user-show-text {
+  padding: 10px;
+}
+
 .box-it-out {
   border-radius: 25px;
   text-align: left;
   padding-top: 1%;
   padding-bottom: 2%;
-  background:rgba(50,0,0,0.5);
+  /*background:rgba(50,0,0,0.5);*/
+  background: black;
+  opacity: 0.85;
   width: 50%;
 }
 
@@ -20,18 +34,20 @@
   padding-bottom: 20px;
 }
 
-.dis-bitch {
+.trending-movies {
   width: 30%;
-  background:rgba(50,0,0,0.5);
+  background:black;
+  opacity: 0.8;
   padding: 3%;
   border-radius: 25px;
   text-align: center;
   margin-bottom: 3%;
 }
 
-.dat-bitch {
+.trending-movies-titles {
   width: 30%;
-  background:rgba(50,0,0,0.5);
+  background:black;
+  opacity: 0.8;
   padding: 1%;
   padding-bottom: 30px;
   border-radius: 25px;
