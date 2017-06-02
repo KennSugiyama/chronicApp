@@ -20,9 +20,15 @@ class ReviewsController < ApplicationController
     redirect_to movie_path(@movie)
   end
 
-  def update
+  def edit
     @movie = Movie.find(params[:movie_id])
-    @review = Review.find(params[:review_id])
+    @review = Review.find(params[:id])
+    render 'edit'
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @movie = @review.movie.id
 
     if @review.update(review_params)
       redirect_to movie_path(@movie)

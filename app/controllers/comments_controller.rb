@@ -20,9 +20,16 @@ class CommentsController < ApplicationController
     redirect_to movie_path(@review.movie)
   end
 
+  def edit
+    @review = Review.find(params[:review_id])
+    @comment = Comment.find(params[:id])
+    render 'edit'
+  end
+
   def update
     @review = Review.find(params[:review_id])
-    @comment = Comment.find(params[:comment_id])
+    @movie = @review.movie.id
+    @comment = Comment.find(params[:id])
 
     if @comment.update(comment_params)
       redirect_to movie_path(@movie)

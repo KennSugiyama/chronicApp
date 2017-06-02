@@ -20,7 +20,7 @@
 <%= review.body %>
 
 <% if review.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_movie_review_path(review) %>
+  <%= link_to 'Edit', edit_movie_review_path(@movie, review) %>
     <%= link_to 'Delete', movie_review_path(@movie, review),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
@@ -33,7 +33,7 @@
     <li><%= comment.user.username %>'s Comment: <%= comment.body %>
 
     <% if comment.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_review_comment_path(comment) %>
+      <%= link_to 'Edit', edit_review_comment_path(review, comment) %>
     <% end %>
 
     <% if current_user.super_user? || comment.user_id == current_user.id %>
