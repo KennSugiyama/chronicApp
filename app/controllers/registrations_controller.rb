@@ -3,9 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
  def create
       super
       #Send email to the user when sign up
-      p "*" * 100
-      # p @user
-      p UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
   end
 
  private
