@@ -10,26 +10,42 @@ class ReviewsController < ApplicationController
   def new
     @movie = Movie.find(params[:movie_id])
     @review = Review.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.new(review_params)
     @review.user_id = current_user.id
-    @review.save
-    redirect_to movie_path(@movie)
+
+    respond_to do |format|
+      if @review.save
+        format.html {redirect_to movie_path(@movie)}
+        format.json
+      end
+    end
   end
 
   def edit
     @movie = Movie.find(params[:movie_id])
     @review = Review.find(params[:id])
     render 'edit'
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def update
     @review = Review.find(params[:id])
     @movie = @review.movie.id
 
+# respond to?
     if @review.update(review_params)
       redirect_to movie_path(@movie)
     else
@@ -42,7 +58,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
 
-    redirect_to movie_path(@movie)
+    respond_to do |format|
+      format.html { redirect_to movie_path(@movie) }
+      format.json
+    end
   end
 
   private
