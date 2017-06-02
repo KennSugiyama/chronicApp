@@ -1,3 +1,60 @@
+/*Trending*/
+.trending-subtitle {
+  padding-bottom: 20px;
+}
+
+.dis-bitch {
+  width: 30%;
+  background:rgba(50,0,0,0.5);
+  padding: 3%;
+  border-radius: 25px;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.dat-bitch {
+  width: 30%;
+  background:rgba(50,0,0,0.5);
+  padding: 1%;
+  padding-bottom: 30px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.white-text {
+  color: #FFFFFF;
+}
+
+/*Homepage*/
+.movie-search {
+  border-radius: 25px;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 2%;
+  margin-top: 18%;
+  margin-left: 25%;
+  margin-right: 25%;
+  background:rgba(50,0,0,0.5);
+  width: 50%;
+}
+
+.home-title {
+  color: #FFFFFF;
+  font-size: 50px;
+}
+
+#home-back-link {
+  background-color: white;
+  border-radius: 5px;
+  border: 0;
+  margin-top: 10px;
+}
+
+footer {
+  margin-top: 22%;
+  margin-left: 4%;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -1086,7 +1143,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-image: url(https://pbs.twimg.com/profile_images/735861411289563136/CpLtg7bj.jpg);
 }
 input,
 button,
