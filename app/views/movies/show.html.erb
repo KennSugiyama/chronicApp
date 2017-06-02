@@ -5,39 +5,47 @@
 <div style="margin-left: 0 auto">
 
 <h1><%= @movie.title %></h1>
+  <% if @movie.image_url != "N/A" %>
+    <img src="<%= @movie.image_url %>">
+  <% end %>
   <p><b>Genre</b>: <%= @movie.genre %></p>
   <p><b>Year</b>: <%= @movie.year %></p>
   <p><b>Actors</b>: <%= @movie.actors %></p>
   <p><b>Director</b>: <%= @movie.director %>
 </div>
 
+<% if @rating %>
+  <h2><%= @rating %> Stars</h2>
+<% else %>
+  <h2>There are no ratings for this movie</h2>
+<% end %>
 
-<h2><%= @rating %> Stars</h2>
+<% if user_signed_in? %>
+  <%= form_tag(movie_rating_path(@movie)) do %>
 
-<%= form_tag(movie_rating_path(@movie)) do %>
+    <%= radio_button_tag(:star, "1") %>
+      <%= label_tag(:star1, "1") %>
+    <%= radio_button_tag(:star, "2") %>
+      <%= label_tag(:star2, "2") %>
+    <%= radio_button_tag(:star, "3") %>
+      <%= label_tag(:star3, "3") %>
+    <%= radio_button_tag(:star, "4") %>
+      <%= label_tag(:star4, "4") %>
+    <%= radio_button_tag(:star, "5") %>
+      <%= label_tag(:star5, "5") %>
 
-  <%= radio_button_tag(:star, "1") %>
-    <%= label_tag(:star1, "1") %>
-  <%= radio_button_tag(:star, "2") %>
-    <%= label_tag(:star2, "2") %>
-  <%= radio_button_tag(:star, "3") %>
-    <%= label_tag(:star3, "3") %>
-  <%= radio_button_tag(:star, "4") %>
-    <%= label_tag(:star4, "4") %>
-  <%= radio_button_tag(:star, "5") %>
-    <%= label_tag(:star5, "5") %>
+    <p class="stars-submit">
+       <%= submit_tag("Submit") %>
+    </p>
 
-  <p>
-     <%= submit_tag("Submit") %>
-  </p>
-
+  <% end %>
 <% end %>
 
 
 
 
 </p>
-<% if  current_user.super_user?  %>
+<% if  user_signed_in? && current_user.super_user?  %>
   <%= link_to 'Write A Review', new_movie_review_path(@movie) %>
 <% end %>
 
