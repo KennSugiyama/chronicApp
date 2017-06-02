@@ -36,6 +36,7 @@ gem 'dotenv'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'actionmailer'
 gem 'capybara'
 
 group :development, :test do
