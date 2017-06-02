@@ -25,7 +25,11 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html {redirect_to movie_path(@movie)}
-        format.js
+        format.js {redirect_to movie_path(@movie)}
+        # format.json { render 'movies/show', status: :created, location: @review }
+      else
+        format.html { redirect_to new_movie_review_path(@movie) }
+        # format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,10 +50,10 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update(review_params)
-        format.html {redirect_to movie_path(@movie)}
-        format.js
+        format.html { redirect_to movie_path(@movie) }
+        format.js { redirect_to movie_path(@movie) }
       else
-        render 'edit'
+        format.html {redirect_to edit_movie_review_path(@movie, review)}
       end
     end
   end
@@ -59,7 +63,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
 
-   redirect_to movie_path(@movie)
+    redirect_to movie_path(@movie)
   end
 
   private

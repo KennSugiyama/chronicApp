@@ -87,6 +87,9 @@ img {
 .white-text {
   color: #FFFFFF;
 }
+.black-text{
+  color: black;
+}
 
 /*Homepage*/
 .movie-search {
