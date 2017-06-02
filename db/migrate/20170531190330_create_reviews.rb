@@ -5,7 +5,8 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       # t.integer :vote_score
       # t.references  :user
       t.references  :movie, { null: false }
-      t.timestamps
+      t.references  :user, { null: false }
+      t.timestamps null: false
     end
   end
 end

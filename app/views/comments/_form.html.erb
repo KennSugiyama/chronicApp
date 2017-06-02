@@ -1,5 +1,5 @@
 <!-- add url path? -->
-<%= form_for @comment do |f| %>
+<%= form_for ([review, review.comments.build]) do |f| %>
 
   <% if @comment.errors.any? %>
     <div id="error_explanation">

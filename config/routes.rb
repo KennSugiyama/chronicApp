@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   root 'application#index'
   get 'application/index'
 
-  resources :reviews
-  resources :comments
-
   resources :movies do
+    resources :reviews
+  end
+
     resources :reviews do
       resources :comments
     end
-  end
+
 end

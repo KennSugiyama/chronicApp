@@ -10,3 +10,19 @@
 
 </div>
 
+<% if user_signed_in? && current_user.super_user == true %>
+  <%= link_to 'Write A Review', new_movie_review_path(@movie) %>
+<% end %>
+
+<% @movie.reviews.each do |review| %>
+
+<p><%= review.user.username %>'s Review:
+<%= review.body %>  </p>
+<%= link_to "Comment", new_review_comment_path(review) %> on <%= review.user.username %>'s Review
+<ol>
+  <% review.comments.each do |comment| %>
+    <li><%= comment.user.username %>'s Comment: <%= comment.body %></li>
+  <% end %>
+</ol>
+<% end %>
+

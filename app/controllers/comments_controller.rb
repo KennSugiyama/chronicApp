@@ -8,17 +8,16 @@ class CommentsController < ApplicationController
   # end
 
   def new
+    @review = Review.find(params[:review_id])
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new(comment_params)
-
-    if @comment.save
-      redirect_to @comment
-    else
-      render 'new'
-    end
+    @review = Review.find(params[:review_id])
+    @comment = @review.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.save
+    redirect_to movie_path(@review.movie)
   end
 
   def update
