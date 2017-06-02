@@ -36,6 +36,18 @@ class VotesController < ApplicationController
     redirect_to(movie_path(@movie))
   end
 
+  def movie_rating
+
+    @movie = Movie.find(params[:movie_id])
+
+    @score = (params[:star])
+
+    @vote = @movie.votes.new(point: @score)
+    @vote.user_id = current_user.id
+    @vote.save
+    redirect_to(movie_path(@movie))
+  end
+
 
   private
   def vote_params
