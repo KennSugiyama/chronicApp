@@ -1,11 +1,5 @@
 class CommentsController < ApplicationController
-  # def index
-  #   @comments = Comment.all
-  # end
-
-  # def show
-  #   @comment = Comment.find(params[:id])
-  # end
+  before_action :find_commentable
 
   def new
     @review = Review.find(params[:review_id])
@@ -47,8 +41,9 @@ class CommentsController < ApplicationController
     redirect_to movie_path(@movie)
   end
 
-
-  def comment_votes
+  def find_commentable
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable = Review.find_by_id(params[:review_id]) if params[:review_id]
   end
 
   private
