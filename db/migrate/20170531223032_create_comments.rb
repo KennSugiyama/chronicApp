@@ -3,9 +3,9 @@ class CreateComments < ActiveRecord::Migration[5.1]
     create_table :comments do |t|
       t.text :body
 
-      # t.references  :user
       t.references :review, { null: false }
-      t.timestamps
+      t.references :user, { null: false }
+      t.timestamps null: false
     end
   end
 end
