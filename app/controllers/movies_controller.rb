@@ -5,6 +5,13 @@ class MoviesController < ApplicationController
     if params[:genre]
       @genre = params[:genre]
       @movies = Movie.where('genre LIKE ?', "%#{@genre}%")
+    elsif params[:rating]
+      order = params[:rating]
+      if order == "High"
+        @movies = Movie.all.sort_by{|movie| movie.votes.average(:point)}.reverse
+      else
+        @movies = Movie.all.sort_by{|movie| movie.votes.average(:point)}
+      end
     else
       @movies = Movie.all
     end
