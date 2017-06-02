@@ -1,3 +1,11 @@
+div a {
+  color: #ffffff;
+}
+
+button a {
+  color: black;
+}
+
 .user-show {
   background: black;
   opacity: 0.8;
