@@ -4,8 +4,7 @@
 
     <% @users.each do |user| %>
       <p class="white-text">
-      <%= link_to "#{user.username}", user_path(user) %>
+      <b><%= link_to "#{user.username}", user_path(user) %></b>
       </p>
-
-<% end %>
+  <% end %>
 </div>

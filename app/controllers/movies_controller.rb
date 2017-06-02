@@ -12,16 +12,21 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @rating = @movie.votes.where(voteable_type:"Movie").average(:point).round(1,:truncate)
-    p "*"*50
-    p @rating
+    if @movie.votes.any?
+      @rating = @movie.votes.where(voteable_type:"Movie").average(:point).round(1,:truncate)
+    end
   end
 
   def search
-    movie_title = params[:title]
-    request = MovieAdapter.new.search(movie_title)
-    @movie = movie_title_search(request)
-    redirect_to movie_path(@movie)
+      movie_title = params[:title]
+      request = MovieAdapter.new.search(movie_title)
+    if request["Response"] == true
+      @movie = movie_title_search(request)
+      redirect_to movie_path(@movie)
+    else
+      @error = "Incorrect spelling of movie title!"
+      render 'application/index'
+    end
   end
 
 

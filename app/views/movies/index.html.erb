@@ -3,15 +3,15 @@
 <!-- Spacial formatting div -->
 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 dis-bitch">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 trending-movies">
 <h1 class="white-text">Trending Movies</h1>
 
   <p class="white-text">Choose Your Genre</p>
   <%= form_tag("/movies/index", method: "get") do %>
 
     <select name="genre">
-      <option value=“Short”>Short</option>
       <option value="Comedy">Comedy</option>
+      <option value=“Short”>Short</option>
       <option value="Drama">Drama</option>
       <option value="Adventure">Adventure</option>
       <option value="Animation">Animation</option>
@@ -30,7 +30,7 @@
   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
 
 
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 dat-bitch">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 trending-movies-titles">
     <div class="trending-subtitle">
       <% if @genre %>
         <h3 class="white-text"><%= @genre %> Movies</h3>
