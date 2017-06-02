@@ -10,6 +10,10 @@
   padding: 10px;
 }
 
+.error {
+  color: red;
+}
+
 .box-it-out {
   border-radius: 25px;
   text-align: left;
