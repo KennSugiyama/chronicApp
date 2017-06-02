@@ -21,8 +21,32 @@
 <%= link_to "Comment", new_review_comment_path(review) %> on <%= review.user.username %>'s Review
 <ol>
   <% review.comments.each do |comment| %>
-    <li><%= comment.user.username %>'s Comment: <%= comment.body %></li>
+    <li><%= comment.user.username %>'s Comment: <%= comment.body %> </li>
   <% end %>
 </ol>
 <% end %>
+
+<br>
+
+<% @movie.reviews.each do |review| %>
+
+<p><%= review.user.username %>'s Review:
+<%= review.body %>  </p>
+<%= link_to "Comment", new_review_comment_path(review) %> on <%= review.user.username %>'s Review
+<ol>
+  <% review.comments.each do |comment| %>
+    <li><%= comment.user.username %>'s Comment: <%= comment.body %>
+      <tr>
+        <td><%= pluralize(comment.votes.count, "votes") %></td>
+        <p><%= comment.id %></p>
+        <td><%= button_to '+1', comment_upvote_path(comment), method: :post %>
+      </tr>
+
+
+
+    </li>
+  <% end %>
+</ol>
+<% end %>
+
 

@@ -37,9 +37,14 @@ class CommentsController < ApplicationController
     redirect_to comments_path
   end
 
+
+  def comment_votes
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:body)
+    params.require(:vote).permit(:point)
   end
 
 end
