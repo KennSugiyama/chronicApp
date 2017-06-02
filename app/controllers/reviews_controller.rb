@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html {redirect_to movie_path(@movie)}
-        format.json
+        format.js
       end
     end
   end
@@ -33,11 +33,10 @@ class ReviewsController < ApplicationController
   def edit
     @movie = Movie.find(params[:movie_id])
     @review = Review.find(params[:id])
-    render 'edit'
 
     respond_to do |format|
       format.html
-      format.json
+      format.js
     end
   end
 
@@ -45,11 +44,13 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @movie = @review.movie.id
 
-# respond to?
-    if @review.update(review_params)
-      redirect_to movie_path(@movie)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @review.update(review_params)
+        format.html {redirect_to movie_path(@movie)}
+        format.js
+      else
+        render 'edit'
+      end
     end
   end
 
@@ -60,7 +61,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to movie_path(@movie) }
-      format.json
+      format.js
     end
   end
 
