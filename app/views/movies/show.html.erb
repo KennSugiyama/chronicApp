@@ -45,7 +45,8 @@
                     <!-- REVIEW SECTION -->
 <% @movie.reviews.each do |review| %>
 
-<p><%= review.user.username %>'s Review:
+<p><%= link_to "#{review.user.username}", user_path(review.user) %>'s Review
+'s Review:
 <%= review.body %>
 
 <% if user_signed_in? && review.user_id == current_user.id %>
@@ -73,7 +74,7 @@
 <ol>
   <% review.comments.each do |comment| %>
 
-    <li><%= comment.user.username %>'s Comment: <%= comment.body %>
+    <li><%= link_to "#{comment.user.username}", user_path(comment.user) %>'s Comment: <%= comment.body %>
 
     <% if user_signed_in? && comment.user_id == current_user.id %>
       <%= link_to 'Edit', edit_review_comment_path(review, comment) %>
