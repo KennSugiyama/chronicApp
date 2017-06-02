@@ -1,1 +1,9 @@
-<h1>This is the index page for all users - WIP</h1>
+<h1>All of our Crabby Users!</h1>
+
+
+    <% @users.each do |user| %>
+      <p>
+      <%= link_to "#{user.username}", user_path(user) %>
+      </p>
+
+<% end %>
