@@ -12,7 +12,7 @@
   <p><b>Year</b>: <%= @movie.year %></p>
   <p><b>Actors</b>: <%= @movie.actors %></p>
   <p><b>Director</b>: <%= @movie.director %>
-</div>
+</div><br>
 
 <% if @rating %>
   <h2><%= @rating %> Stars</h2>
@@ -47,7 +47,7 @@
 </p>
 <% if  user_signed_in? && current_user.super_user?  %>
   <%= link_to 'Write A Review', new_movie_review_path(@movie) %>
-<% end %>
+<% end %><br><br><br>
 
 
                     <!-- REVIEW SECTION -->
@@ -94,8 +94,8 @@
     <% end %>
 
         <td><%= pluralize(comment.votes.sum(:point), "votes") %></td>
-        <span class="vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></span>
-        <span class="vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></span>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></div>
     </li>
 
   <% end %>
