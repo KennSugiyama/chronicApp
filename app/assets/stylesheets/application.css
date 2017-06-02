@@ -108,6 +108,9 @@ button a {
 .white-text {
   color: #FFFFFF;
 }
+.black-text{
+  color: black;
+}
 
 /*Homepage*/
 .movie-search {
