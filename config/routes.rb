@@ -40,5 +40,9 @@ Rails.application.routes.draw do
       post "rating", to: "votes#movie_rating"
   end
 
+  resources :comments do
+    resources :comments
+  end
+
 
 end

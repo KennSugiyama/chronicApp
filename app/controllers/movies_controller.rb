@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
   def search
       movie_title = params[:title]
       request = MovieAdapter.new.search(movie_title)
-    if request["Response"] == true
+    if request["Response"] == "True"
       @movie = movie_title_search(request)
       redirect_to movie_path(@movie)
     else
