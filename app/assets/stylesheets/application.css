@@ -5,10 +5,21 @@ ul {
 div a {
   color: #ffffff;
 }
+span .total-like-count {
+  color: white;
+}
 
 .order {
   color: white;
   text-align: left;
+}
+
+#new-comment-form {
+  color: black;
+}
+
+#edit-comment-form {
+  color: white;
 }
 
 button a {
@@ -34,7 +45,7 @@ button a {
 
 .user-show {
   background: black;
-  opacity: 0.8;
+  opacity: 0.85;
   color: white;
   width: 50%;
   border-radius: 25px;
@@ -62,9 +73,7 @@ button a {
   text-align: left;
   padding-top: 1%;
   padding-bottom: 2%;
-  background:rgba(0,0,0,0.8);
-/*  background: black;
-  opacity: 0.85;*/
+  background:rgba(0,0,0,0.85);
   width: 50%;
 }
 
@@ -89,7 +98,7 @@ button a {
 
 .trending-movies {
   width: 30%;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.85);
   padding: 3%;
   border-radius: 25px;
   text-align: center;
@@ -98,7 +107,7 @@ button a {
 
 .trending-movies-titles {
   width: 30%;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.85);
   padding: 1%;
   padding-bottom: 30px;
   border-radius: 25px;

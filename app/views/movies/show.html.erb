@@ -73,7 +73,9 @@
 
                   <!-- COMMENT SECTION -->
 <% if user_signed_in? %>
-<%= link_to "Add a Comment", new_review_comment_path(review) %>
+<div id="new-comment-form">
+  <%= link_to "Add a Comment", new_review_comment_path(review), remote: true %>
+</div>
 <% end %><br><br>
 
   <% review.comments.each do |comment| %>
@@ -82,7 +84,10 @@
     <li><%= link_to "#{comment.user.username}", user_path(comment.user) %>'s comment: "<%= comment.body %>"
 
     <% if user_signed_in? && comment.user_id == current_user.id %>
-      <span class="btn"><%= link_to 'Edit', edit_review_comment_path(review, comment) %></span>
+      <span class="btn">
+      <div id="edit-comment-form">
+        <%= link_to 'Edit', edit_review_comment_path(review, comment), remote: true %></span>
+      </div>
     <% end %>
 
     <% if user_signed_in? && (current_user.super_user? || comment.user_id == current_user.id) %>
@@ -91,7 +96,7 @@
                   data: { confirm: 'Are you sure?' } %></span>
     <% end %>
 <br>
-        <span><%= pluralize(comment.votes.sum(:point), "votes") %></span>
+        <span class="total-like-count"><%= pluralize(comment.votes.sum(:point), "votes") %></span>
         <div class="vote-buttons"><%= button_to '+1', comment_upvote_path(comment), method: :post %></div>
         <div class="vote-buttons"><%= button_to '-1', comment_downvote_path(comment), method: :post %></div>
     </li>
