@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="movie-search">
+	<p class="error"><b><%= @error %></b></p>
+	<h1 class="home-title">Movie Search</h1><br>
+			<%= form_tag search_path, :method => 'get' do %>
+			  <p>
+			    <%= text_field_tag :title,  params[:title], placeholder: "What are you looking for?", size: 30 %>
+			    <%= submit_tag "Search", :name => nil %>
+			  </p>
+
+			<% end %>
+	</div>
+</div>
